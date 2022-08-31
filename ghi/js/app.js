@@ -17,10 +17,18 @@ window.addEventListener("DOMContentLoaded", async () => {
       const detailResponse = await fetch(detailUrl);
       if (detailResponse.ok) {
         const details = await detailResponse.json();
+        console.log(details);
 
+        // DESCRIPTION:
         const description = details.conference.description;
         const descriptionTag = document.querySelector(".card-text");
         descriptionTag.innerHTML = description;
+
+        // IMAGE:
+        const image = details.conference.location.picture_url;
+        const imageTag = document.querySelector(".card-img-top");
+        // set src property of the <img> tag:
+        imageTag.src = image;
       }
     }
   } catch (e) {
