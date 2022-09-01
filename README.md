@@ -7,3 +7,4 @@
 - [x] create new location: http://localhost:3000/new-location.html
 - [x] create new conference: http://localhost:3000/new-conference.htmls
 - [x] create new presentation: http://localhost:3000/new-presentation.html
+- [x] attend conference: http://localhost:3000/attend-conference.html
