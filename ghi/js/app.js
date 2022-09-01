@@ -1,3 +1,23 @@
+function createPlaceholderCard() {
+  return `
+    <div class="card" aria-hidden="true">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+      </p>
+      <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    </div>
+  `;
+}
+
 function createCard(name, description, pictureUrl, starts, ends, location) {
   return `
     <div class="card shadow p-3 mb-4 bg-body rounded">
@@ -15,6 +35,8 @@ function createCard(name, description, pictureUrl, starts, ends, location) {
 }
 
 function createAlert() {
+  const alertTag = document.querySelector(".alert");
+  alertTag.innerHTML = createAlert();
   return `
     <div class="alert alert-danger" role="alert">
       Error alert — check it out!
@@ -30,6 +52,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if (!response.ok) {
       // Figure out what to do when the response is bad:
+      // throw new Error("Response not ok");
       const alertTag = document.querySelector(".alert");
       alertTag.innerHTML = createAlert();
     } else {
@@ -39,6 +62,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       for (let conference of data.conferences) {
         const detailUrl = `http://localhost:8000${conference.href}`;
         const detailResponse = await fetch(detailUrl);
+
         if (detailResponse.ok) {
           const details = await detailResponse.json();
           const name = details.conference.name;
@@ -60,15 +84,15 @@ window.addEventListener("DOMContentLoaded", async () => {
           // const column = document.querySelector(".col");
           const column = document.querySelector(`#col-${index % 3}`);
           column.innerHTML += html;
-          index += 1;
+          index++;
         }
       }
     }
   } catch (e) {
-    // Figure out what to do if an error is raised
+    // Figure out what to do if an error is raised:
+    // console.error("error", error);
     const alertTag = document.querySelector(".alert");
     alertTag.innerHTML = createAlert();
-    console.error(e);
   }
 });
 
