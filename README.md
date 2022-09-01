@@ -6,4 +6,4 @@
 - [x] front-end application: http://localhost:3000/
 - [x] create new location: http://localhost:3000/new-location.html
 - [x] create new conference: http://localhost:3000/new-conference.htmls
-- [ ]
+- [x] create new presentation: http://localhost:3000/new-presentation.html
