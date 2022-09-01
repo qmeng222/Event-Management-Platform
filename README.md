@@ -5,4 +5,5 @@
 - [x] fake SMTP server: http://localhost:8025/
 - [x] front-end application: http://localhost:3000/
 - [x] create new location: http://localhost:3000/new-location.html
+- [x] create new conference: http://localhost:3000/new-conference.htmls
 - [ ]
