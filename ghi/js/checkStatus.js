@@ -1,19 +1,19 @@
 // Get the cookie out of the cookie store
 const payloadCookie = await cookieStore.get("jwt_access_payload"); // cookieStore.get("cookieName")
-console.log("payloadCookie:", payloadCookie);
+// console.log("payloadCookie:", payloadCookie);
 
 if (payloadCookie) {
-  // The cookie value is a JSON-formatted string, so parse it (JSON --> JS):
-  const encodedPayload = JSON.parse(payloadCookie.value); // ???????
-  console.log("encodedPayload:", encodedPayload);
+  // The cookie value is a JSON-formatted string:
+  const encodedPayload = payloadCookie.value;
+  // console.log("encodedPayload:", encodedPayload);
 
   // Convert the encoded payload from base64 to normal string
   const decodedPayload = atob(encodedPayload); // atob(encodedData(a binary string))
-  console.log("decodedPayload:", decodedPayload);
+  // console.log("decodedPayload:", decodedPayload);
 
   // The payload is a JSON-formatted string, so parse it
   const payload = JSON.parse(decodedPayload);
-  console.log("payload:", payload);
+  // console.log("payload:", payload);
 
   // CONFERENCE: check if "events.add_conference" is in the permissions
   if (payload.user.perms.includes("events.add_conference")) {
