@@ -15,23 +15,25 @@ if (payloadCookie) {
   const payload = JSON.parse(decodedPayload);
   // console.log("payload:", payload);
 
+  // ref: https://www.w3schools.com/cssref/css_selectors.asp
   // CONFERENCE: check if "events.add_conference" is in the permissions
   if (payload.user.perms.includes("events.add_conference")) {
     // If it is, remove 'd-none' from the link
-    const confTag = document.querySelector("a.d-none"); // select every <a> element with the class "d-none"
+    // const confTag = document.querySelector("a.d-none"); // select every <a> element with the class "d-none"
+    const confTag = document.querySelector("a[href*='new-conference']");
     confTag.classList.remove("d-none");
   }
 
   // LOCATION: check if "events.add_location" is in the permissions
   if (payload.user.perms.includes("events.add_location")) {
     // If it is, remove 'd-none' from the link
-    const locTag = document.querySelector("[href='new-location.html']");
+    const locTag = document.querySelector("a[href*='new-location']");
     locTag.classList.remove("d-none");
   }
 
   // PRESENTATION:
   if (payload.user.perms.includes("presentations.add_presentation")) {
-    const presTag = document.querySelector("[href='new-presentation.html']");
+    const presTag = document.querySelector("a[href*='new-presentation']");
     presTag.classList.remove("d-none");
   }
 }
