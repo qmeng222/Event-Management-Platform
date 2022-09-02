@@ -15,12 +15,11 @@ if (payloadCookie) {
   const payload = JSON.parse(decodedPayload);
   // console.log("payload:", payload);
 
-  // ref: https://www.w3schools.com/cssref/css_selectors.asp
+  // CSS selector reference: https://www.w3schools.com/cssref/css_selectors.asp
   // CONFERENCE: check if "events.add_conference" is in the permissions
   if (payload.user.perms.includes("events.add_conference")) {
     // If it is, remove 'd-none' from the link
-    // const confTag = document.querySelector("a.d-none"); // select every <a> element with the class "d-none"
-    const confTag = document.querySelector("a[href*='new-conference']");
+    const confTag = document.querySelector("a[href*='new-conference']"); // selects every <a> element whose href attribute value contains the substring "new-conference"
     confTag.classList.remove("d-none");
   }
 
