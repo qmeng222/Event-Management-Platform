@@ -9,6 +9,7 @@
 - [x] create new presentation: http://localhost:3000/new-presentation.html
 - [x] attend conference: http://localhost:3000/attend-conference.html
 - [x] login: http://localhost:3000/login.html
+- [x] React app: http://localhost:3001/
 
 ---
 
