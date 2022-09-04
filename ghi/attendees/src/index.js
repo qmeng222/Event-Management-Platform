@@ -18,11 +18,15 @@ reportWebVitals();
 
 async function loadAttendees() {
   const response = await fetch("http://localhost:8001/api/attendees/");
-  // console.log(response);
   if (response.ok) {
     // json(): returns a promise of taking JSON into JS obj
     const data = await response.json();
-    console.log(data);
+    // console.log("data:", data);
+    root.render(
+      <React.StrictMode>
+        <App attendees={data.attendees} />
+      </React.StrictMode>
+    );
   } else {
     console.error(response);
   }
