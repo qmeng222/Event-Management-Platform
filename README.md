@@ -1,3 +1,5 @@
+- [x] delete all containers:
+      docker container prune -f
 - [x] build the images defined in the docker-compose.yml file and run the application:
       docker-compose build
       docker-compose up
@@ -10,6 +12,9 @@
 - [x] attend conference: http://localhost:3000/attend-conference.html
 - [x] login: http://localhost:3000/login.html
 - [x] React app: http://localhost:3001/
+
+- [x] stop container: docker container stop attendees-microservice monolith
+- [x] remove container: docker container rm attendees-microservice monolith
 
 ---
 
