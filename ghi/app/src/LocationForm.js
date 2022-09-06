@@ -3,12 +3,20 @@ import React from "react";
 class LocationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { states: [] };
+
+    this.state = {
+      name: "",
+      roomCount: "",
+      city: "",
+      states: [],
+    };
+
     // bind in constructor:
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleRoomCountChange = this.handleRoomCountChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // methods to update the components' state:
@@ -32,6 +40,38 @@ class LocationForm extends React.Component {
     this.setState({ state: value });
   }
 
+  async handleSubmit(event) {
+    event.preventDefault();
+    const data = { ...this.state };
+    data.room_count = data.roomCount;
+    delete data.roomCount;
+    delete data.states;
+    console.log(data);
+
+    const locationUrl = "http://localhost:8000/api/locations/";
+    const fetchConfig = {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await fetch(locationUrl, fetchConfig);
+    if (response.ok) {
+      const newLocation = await response.json();
+      console.log(newLocation);
+
+      const cleared = {
+        name: "",
+        roomCount: "",
+        city: "",
+        state: "",
+      };
+      this.setState(cleared);
+    }
+  }
+
   async componentDidMount() {
     const url = "http://localhost:8000/api/states/";
     const response = await fetch(url);
@@ -48,11 +88,12 @@ class LocationForm extends React.Component {
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
             <h1>Create a new location</h1>
-            <form id="create-location-form">
+            <form onSubmit={this.handleSubmit} id="create-location-form">
               {/* NAME: */}
               <div className="form-floating mb-3">
                 <input
                   onChange={this.handleNameChange}
+                  value={this.state.name}
                   placeholder="Name"
                   required
                   type="text"
@@ -67,6 +108,7 @@ class LocationForm extends React.Component {
               <div className="form-floating mb-3">
                 <input
                   onChange={this.handleRoomCountChange}
+                  value={this.state.roomCount}
                   placeholder="Room count"
                   required
                   type="number"
@@ -81,6 +123,7 @@ class LocationForm extends React.Component {
               <div className="form-floating mb-3">
                 <input
                   onChange={this.handleCityChange}
+                  value={this.state.city}
                   placeholder="City"
                   required
                   type="text"
@@ -95,6 +138,7 @@ class LocationForm extends React.Component {
               <div className="mb-3">
                 <select
                   onChange={this.handleStateChange}
+                  value={this.state.state}
                   required
                   name="state"
                   id="state"
