@@ -4,12 +4,32 @@ class LocationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { states: [] };
+    // bind in constructor:
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleRoomCountChange = this.handleRoomCountChange.bind(this);
+    this.handleCityChange = this.handleCityChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
   }
 
+  // methods to update the components' state:
   handleNameChange(event) {
     const value = event.target.value;
     this.setState({ name: value });
+  }
+
+  handleRoomCountChange(event) {
+    const value = event.target.value;
+    this.setState({ roomCount: value });
+  }
+
+  handleCityChange(event) {
+    const value = event.target.value;
+    this.setState({ city: value });
+  }
+
+  handleStateChange(event) {
+    const value = event.target.value;
+    this.setState({ state: value });
   }
 
   async componentDidMount() {
@@ -29,6 +49,7 @@ class LocationForm extends React.Component {
           <div className="shadow p-4 mt-4">
             <h1>Create a new location</h1>
             <form id="create-location-form">
+              {/* NAME: */}
               <div className="form-floating mb-3">
                 <input
                   onChange={this.handleNameChange}
@@ -41,8 +62,11 @@ class LocationForm extends React.Component {
                 />
                 <label htmlFor="name">Name</label>
               </div>
+
+              {/* ROOM COUNT: */}
               <div className="form-floating mb-3">
                 <input
+                  onChange={this.handleRoomCountChange}
                   placeholder="Room count"
                   required
                   type="number"
@@ -52,8 +76,11 @@ class LocationForm extends React.Component {
                 />
                 <label htmlFor="room_count">Room count</label>
               </div>
+
+              {/* CITY: */}
               <div className="form-floating mb-3">
                 <input
+                  onChange={this.handleCityChange}
                   placeholder="City"
                   required
                   type="text"
@@ -63,8 +90,11 @@ class LocationForm extends React.Component {
                 />
                 <label htmlFor="city">City</label>
               </div>
+
+              {/* CHOOSE A STATE: */}
               <div className="mb-3">
                 <select
+                  onChange={this.handleStateChange}
                   required
                   name="state"
                   id="state"
@@ -83,6 +113,7 @@ class LocationForm extends React.Component {
                   })}
                 </select>
               </div>
+
               <button className="btn btn-primary">Create</button>
             </form>
           </div>
