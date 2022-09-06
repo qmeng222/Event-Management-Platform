@@ -11,6 +11,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       selectTag.appendChild(option);
     }
   }
+
   const formTag = document.getElementById("create-location-form");
   formTag.addEventListener("submit", async (event) => {
     event.preventDefault();
