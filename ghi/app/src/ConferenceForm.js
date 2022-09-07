@@ -30,26 +30,32 @@ class ConferenceForm extends React.Component {
     const value = event.target.value;
     this.setState({ name: value });
   }
+
   handleStartDateChange(event) {
     const value = event.target.value;
     this.setState({ starts: value });
   }
+
   handleEndDateChange(event) {
     const value = event.target.value;
     this.setState({ ends: value });
   }
+
   handleDescriptionChange(event) {
     const value = event.target.value;
     this.setState({ description: value });
   }
+
   handleMaxPresChange(event) {
     const value = event.target.value;
     this.setState({ maxPres: value });
   }
+
   handleMaxAttendeesChange(event) {
     const value = event.target.value;
     this.setState({ maxAtt: value });
   }
+
   handleLocationChange(event) {
     const value = event.target.value;
     this.setState({ location: value });
@@ -64,7 +70,7 @@ class ConferenceForm extends React.Component {
     delete data.maxAtt;
     delete data.locations;
 
-    const conferenceUrl = "http://localhost:8000/api/conferences/";
+    const conferencesUrl = "http://localhost:8000/api/conferences/";
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -73,7 +79,7 @@ class ConferenceForm extends React.Component {
       },
     };
 
-    const response = await fetch(conferenceUrl, fetchConfig);
+    const response = await fetch(conferencesUrl, fetchConfig);
     if (response.ok) {
       const newConference = await response.json();
       console.log(newConference);
