@@ -72,6 +72,7 @@ class LocationForm extends React.Component {
     }
   }
 
+  // load the states for the dropdown:
   async componentDidMount() {
     const url = "http://localhost:8000/api/states/";
     const response = await fetch(url);
