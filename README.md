@@ -21,8 +21,7 @@
 - [x] http://localhost:3001/locations/new
 - [x] http://localhost:3001/conferences/new
 
-- [x] build the React app: npm run build
-- [x] copy the files from the build directory that gets created to the ghi directory
+- [x] build the app: docker exec -it «container-name» npm run build
 
 ---
 
