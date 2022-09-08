@@ -12,7 +12,6 @@
     />
     <title>New Presentation :: Conference GO!</title>
     <script type="module" src="js/new-presentation.js"></script>
-    <script type="module" src="./js/checkStatus.js"></script>
   </head>
   <body>
     <header>
@@ -40,7 +39,7 @@
                   class="nav-link d-none"
                   aria-current="page"
                   href="new-location.html"
-                  >New Location</a
+                  >New location</a
                 >
               </li>
               <li class="nav-item">
@@ -48,15 +47,15 @@
                   class="nav-link d-none"
                   aria-current="page"
                   href="new-conference.html"
-                  >New Conference</a
+                  >New conference</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link d-none active"
+                  class="nav-link active"
                   aria-current="page"
                   href="new-presentation.html"
-                  >New Presentation</a
+                  >New presentation</a
                 >
               </li>
             </ul>
@@ -70,9 +69,9 @@
               <button class="btn btn-outline-success" type="submit">
                 Search
               </button>
-              <a class="btn btn-primary" href="new-presentation.html">
-                Attend!
-              </a>
+              <a class="btn btn-primary" href="attend-conference.html"
+                >Attend!</a
+              >
             </form>
           </div>
         </div>
@@ -100,7 +99,7 @@
                   <input
                     placeholder="Presenter email"
                     required
-                    type="text"
+                    type="email"
                     name="presenter_email"
                     id="presenter_email"
                     class="form-control"
@@ -110,13 +109,12 @@
                 <div class="form-floating mb-3">
                   <input
                     placeholder="Company name"
-                    required
                     type="text"
                     name="company_name"
                     id="company_name"
                     class="form-control"
                   />
-                  <label for="company_name">Company Name</label>
+                  <label for="company_name">Company name</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input
@@ -129,14 +127,14 @@
                   />
                   <label for="title">Title</label>
                 </div>
-                <label for="synopsis">Synopsis</label>
-                <div class="form-floating mb-3">
+                <div class="mb-3">
+                  <label for="synopsis">Synopsis</label>
                   <textarea
                     class="form-control"
-                    required
-                    name="synopsis"
                     id="synopsis"
-                    rows="10"
+                    rows="3"
+                    name="synopsis"
+                    class="form-control"
                   ></textarea>
                 </div>
                 <div class="mb-3">

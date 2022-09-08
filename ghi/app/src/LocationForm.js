@@ -43,9 +43,11 @@ class LocationForm extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
+
     data.room_count = data.roomCount;
     delete data.roomCount;
-    delete data.states;
+
+    delete data.states; // clear the dropdown
     console.log(data);
 
     const locationUrl = "http://localhost:8000/api/locations/";
@@ -56,7 +58,6 @@ class LocationForm extends React.Component {
         "Content-Type": "application/json",
       },
     };
-
     const response = await fetch(locationUrl, fetchConfig);
     if (response.ok) {
       const newLocation = await response.json();

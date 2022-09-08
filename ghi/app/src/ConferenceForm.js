@@ -220,7 +220,7 @@ class ConferenceForm extends React.Component {
                   <option value="">Choose a location</option>
                   {this.state.locations.map((location) => {
                     return (
-                      <option value={location.id} key={location.href}>
+                      <option key={location.href} value={location.id}>
                         {location.name}
                       </option>
                     );

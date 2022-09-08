@@ -1,45 +1,41 @@
 window.addEventListener("DOMContentLoaded", async () => {
-  const URL = "http://localhost:8000/api/conferences/";
-  try {
-    const response = await fetch(URL);
-    if (!response.ok) {
-      throw new Error("Response not ok");
-    } else {
-      const data = await response.json();
-      let selectTag = document.getElementById("conference");
-      data.conferences.forEach((conference) => {
-        let option = document.createElement("option");
-        option.value = conference.id;
-        option.innerHTML = conference.name;
-        selectTag.appendChild(option);
-      });
+  const url = "http://localhost:8000/api/conferences/";
+
+  const response = await fetch(url);
+
+  if (response.ok) {
+    const data = await response.json();
+
+    const selectTag = document.getElementById("conference");
+    for (let conference of data.conferences) {
+      const option = document.createElement("option");
+      option.value = conference.id;
+      option.innerHTML = conference.name;
+      selectTag.appendChild(option);
     }
-  } catch (e) {
-    alert(e);
   }
 
   const formTag = document.getElementById("create-presentation-form");
-
+  const selectTag = document.getElementById("conference");
   formTag.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(formTag);
-    const dataObject = Object.fromEntries(formData);
-    console.log(dataObject);
-    const json = JSON.stringify(dataObject);
+    const json = JSON.stringify(Object.fromEntries(formData));
 
-    const presentationUrl = `http://localhost:8000/api/conferences/${dataObject.conference}/presentations/`;
-    let fetchOptions = {
+    const conferenceId = selectTag.options[selectTag.selectedIndex].value;
+    const locationUrl = `http://localhost:8000/api/conferences/${conferenceId}/presentations/`;
+    const fetchConfig = {
       method: "post",
       body: json,
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
     };
-    const response = await fetch(presentationUrl, fetchOptions);
+    const response = await fetch(locationUrl, fetchConfig);
     if (response.ok) {
       formTag.reset();
-      const newPresentation = await response.json();
-      console.log(newPresentation);
+      const newConference = await response.json();
+      console.log(newConference);
     }
   });
 });

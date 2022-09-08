@@ -16,6 +16,11 @@
 - [x] stop container: docker container stop attendees-microservice monolith
 - [x] remove container: docker container rm attendees-microservice monolith
 
+- [x] http://localhost:3001/attendees
+- [x] http://localhost:3001/attendees/new
+- [x] http://localhost:3001/locations/new
+- [x] http://localhost:3001/conferences/new
+
 ---
 
 # Setup:
