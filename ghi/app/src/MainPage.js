@@ -11,6 +11,7 @@ function ConferenceColumn(props) {
             <img
               src={conference.location.picture_url}
               className="card-img-top"
+              alt="card img"
             />
             <div className="card-body">
               <h5 className="card-title">{conference.name}</h5>
